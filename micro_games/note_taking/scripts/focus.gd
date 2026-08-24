@@ -11,7 +11,6 @@ func _ready() -> void:
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
-		print(event.position)
 		_look(event.position)
 		
 		

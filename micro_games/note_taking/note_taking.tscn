@@ -2,13 +2,44 @@
 
 [ext_resource type="Script" uid="uid://cgpsy4y7j6bgj" path="res://micro_games/note_taking/scripts/note_taking.gd" id="1_c767q"]
 [ext_resource type="Texture2D" uid="uid://bbkr82ex4n8bw" path="res://micro_games/note_taking/assets/Layer 1.png" id="2_axxmt"]
-[ext_resource type="Texture2D" uid="uid://dfb31vmpabfm1" path="res://icon.svg" id="3_b7p2f"]
 [ext_resource type="Texture2D" uid="uid://wo0pwcthmj68" path="res://micro_games/note_taking/assets/Layer 6.png" id="3_drbge"]
+[ext_resource type="Texture2D" uid="uid://4kl6me76ilhx" path="res://micro_games/note_taking/assets/slides/slides2.png" id="3_u8474"]
+[ext_resource type="Texture2D" uid="uid://cu0yakr0plp65" path="res://micro_games/note_taking/assets/slides/slides3.png" id="4_8qtc8"]
 [ext_resource type="Texture2D" uid="uid://bluw6lhlwvev6" path="res://micro_games/note_taking/assets/Layer 3.png" id="4_c767q"]
 [ext_resource type="Texture2D" uid="uid://bwld1cwjl3gkv" path="res://micro_games/note_taking/assets/Layer 4.png" id="5_4vl32"]
 [ext_resource type="Texture2D" uid="uid://xp2m66chd0dr" path="res://micro_games/note_taking/assets/Layer 3 Copy.png" id="5_b7p2f"]
+[ext_resource type="Texture2D" uid="uid://c0ji6g3fkr1l4" path="res://micro_games/note_taking/assets/slides/slides1.png" id="5_bccr6"]
 [ext_resource type="Script" uid="uid://bh1abs6yi3d20" path="res://micro_games/note_taking/scripts/focus.gd" id="6_drbge"]
 [ext_resource type="Curve" uid="uid://bc7fuynr3tf1r" path="res://micro_games/note_taking/look_curve.tres" id="7_c767q"]
+[ext_resource type="Texture2D" uid="uid://cudk20b7f0n3s" path="res://micro_games/note_taking/assets/center_arrows.png" id="9_b7p2f"]
+[ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="10_r108p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj0jj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u8474")
+}],
+"loop": true,
+"name": &"Class",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8qtc8")
+}],
+"loop": true,
+"name": &"Over",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bccr6")
+}],
+"loop": true,
+"name": &"Welcome",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vl32"]
 radius = 126.00006
@@ -29,6 +60,7 @@ script = ExtResource("1_c767q")
 control_format = 0
 lose_on_timeout = true
 game_duration = 10.0
+pre_game_time = 5.0
 metadata/_custom_type_script = "uid://c6chk3rdyriqb"
 
 [node name="BackgroundPara" type="Parallax2D" parent="." unique_id=2015070463]
@@ -40,62 +72,61 @@ scale = Vector2(0.96, 0.96)
 texture = ExtResource("2_axxmt")
 centered = false
 
-[node name="ScreenRect" type="ColorRect" parent="BackgroundPara" unique_id=878646698]
+[node name="Screen" type="AnimatedSprite2D" parent="BackgroundPara" unique_id=468159917]
 unique_name_in_owner = true
-offset_left = 360.0
-offset_top = 182.0
-offset_right = 732.0
-offset_bottom = 386.0
+position = Vector2(576, 286)
+sprite_frames = SubResource("SpriteFrames_uj0jj")
+animation = &"Welcome"
 
 [node name="TestPoints" type="Node2D" parent="BackgroundPara" unique_id=47910650]
 unique_name_in_owner = true
 
 [node name="Marker2D" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=591597741]
-position = Vector2(408.8, 212)
+position = Vector2(444.8, 220.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D2" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=1781582920]
-position = Vector2(408.8, 356)
+position = Vector2(444.8, 364.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D3" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=566427693]
-position = Vector2(408.8, 286)
+position = Vector2(444.8, 294.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D4" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=1724273957]
-position = Vector2(502.8, 212)
+position = Vector2(538.8, 220.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D5" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=715363016]
-position = Vector2(502.8, 356)
+position = Vector2(538.8, 364.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D6" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=410917394]
-position = Vector2(502.8, 286)
+position = Vector2(538.8, 294.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D10" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=139183223]
-position = Vector2(590.8, 212)
+position = Vector2(626.8, 220.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D11" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=1167775951]
-position = Vector2(590.8, 356)
+position = Vector2(626.8, 364.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D12" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=2068484303]
-position = Vector2(590.8, 286)
+position = Vector2(626.8, 294.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D7" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=134134512]
-position = Vector2(670.8, 212)
+position = Vector2(706.8, 220.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D8" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=151360324]
-position = Vector2(670.8, 356)
+position = Vector2(706.8, 364.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D9" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=95274907]
-position = Vector2(670.8, 286)
+position = Vector2(706.8, 294.8)
 gizmo_extents = 30.8
 
 [node name="BackgroundPara2" type="Parallax2D" parent="." unique_id=2133093075]
@@ -199,6 +230,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_b7p2f")
 max_value = 1.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=303107880]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -207,7 +239,28 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer" unique_id=1664559536]
-custom_minimum_size = Vector2(36.115, 36.1)
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
-texture = ExtResource("3_b7p2f")
+texture = ExtResource("9_b7p2f")
 expand_mode = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer" unique_id=925272645]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Control" unique_id=1055410746]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = 123.205
+offset_right = 101.5
+offset_bottom = 149.20502
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_r108p")
+theme_override_font_sizes/font_size = 29
+text = "start mouse here"

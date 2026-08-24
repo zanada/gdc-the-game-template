@@ -1,7 +1,5 @@
 extends MicroGame
 
-@export var blockers : Array[Area2D]
-
 var sample_areas : Array[Area2D]
 var sample_count : int = 0
 var blocked_areas : Dictionary[Area2D, bool]
@@ -31,9 +29,14 @@ func _ready() -> void:
 		
 		sample_count += 1
 		
-	%ScreenRect.color = Color.DARK_SEA_GREEN
+	start.connect(_game_start)
+	lose.connect(_game_over)
 	
-	game_state = GameState.ACTIVE
+		
+func _game_start() -> void:
+	%CenterContainer.hide()
+	%Screen.animation = "Class"
+	game_state = GameState.ACTIVE	
 		
 func _area_blocked(_blocking_area:Area2D, blocked_area:Area2D, shape:CollisionShape2D) -> void:
 	blocked_areas[blocked_area] = true
@@ -47,22 +50,23 @@ func _area_unblocked(_blocking_area:Area2D, blocked_area:Area2D, shape:Collision
 	_update_blockings() 
 	
 func _update_blockings() -> void:
+	if game_state != GameState.ACTIVE: return
+	
 	if blocked_areas.size() >= sample_count/2:
-		%ScreenRect.color = Color.INDIAN_RED
 		seeing_screen = false
 	else:
-		%ScreenRect.color = Color.DARK_SEA_GREEN
 		seeing_screen = true
 	
 func _process(delta: float) -> void:
+	if game_state != GameState.ACTIVE: return
 	
-	if game_state == GameState.ACTIVE:
-		if seeing_screen:
-			progress += 0.2 * delta
-			%ProgressBar.value = progress
+	if seeing_screen:
+		progress += 0.2 * delta
+		%ProgressBar.value = progress
+		
+		if progress >= 1:
+			game_state = GameState.OVER
+			win.emit()
 			
-			if progress >= 1:
-				game_state = GameState.OVER
-				win.emit()
-			
-	
+func _game_over() -> void:
+	%Screen.animation = "Over"
