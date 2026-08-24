@@ -1,5 +1,7 @@
 extends MicroGame
 
+@export var classmates : Array[NT_Classmate]
+
 var sample_areas : Array[Area2D]
 var sample_count : int = 0
 var blocked_areas : Dictionary[Area2D, bool]
@@ -13,6 +15,7 @@ enum GameState {
 var game_state : GameState = GameState.BEFORE
 
 func _ready() -> void:
+	_hide_classmates()
 	# create area 2d's at marker positions
 	for child in %TestPoints.get_children():
 		var area2d : Area2D = Area2D.new()
@@ -31,12 +34,19 @@ func _ready() -> void:
 		
 	start.connect(_game_start)
 	lose.connect(_game_over)
+	#win.connect(_game_won)
+	
+	#_game_start()
 	
 		
 func _game_start() -> void:
+	_show_classmates()
 	%CenterContainer.hide()
 	%Screen.animation = "Class"
-	game_state = GameState.ACTIVE	
+	
+	for classmate in classmates:
+		classmate.initialize()
+	game_state = GameState.ACTIVE
 		
 func _area_blocked(_blocking_area:Area2D, blocked_area:Area2D, shape:CollisionShape2D) -> void:
 	blocked_areas[blocked_area] = true
@@ -69,4 +79,19 @@ func _process(delta: float) -> void:
 			win.emit()
 			
 func _game_over() -> void:
+	#for mate in classmates:
+		#mate.stop()
+	
+	game_state = GameState.OVER
+	_hide_classmates()
 	%Screen.animation = "Over"
+	
+#func _game_won() -> void:
+	#for mate in classmates:
+		#mate.stop()
+	
+func _hide_classmates() -> void:
+	$BackgroundPara3.hide()
+	
+func _show_classmates() -> void:
+	$BackgroundPara3.show()
