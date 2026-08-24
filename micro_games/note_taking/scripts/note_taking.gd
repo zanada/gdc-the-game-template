@@ -1,6 +1,11 @@
 extends MicroGame
 
 @export var classmates : Array[NT_Classmate]
+@export var progress_speed : float = 0.3
+
+@onready var screen: AnimatedSprite2D = %ScreenAnim
+@onready var writing_audio: AudioStreamPlayer = $WritingAudio
+@onready var pencil_audio: AudioStreamPlayer = $PencilAudio
 
 var sample_areas : Array[Area2D]
 var sample_count : int = 0
@@ -32,20 +37,22 @@ func _ready() -> void:
 		
 		sample_count += 1
 		
+	enter_animation.connect(_intro)
 	start.connect(_game_start)
 	lose.connect(_game_over)
-	#win.connect(_game_won)
+	win.connect(_game_won)
 	
+	writing_audio.finished.connect(func(): writing_audio.play())
 	#_game_start()
-	
+
+func _intro() -> void:
+	await get_tree().create_timer(2.0 * pre_game_time / 3.0).timeout
+	_show_classmates() 
 		
 func _game_start() -> void:
-	_show_classmates()
 	%CenterContainer.hide()
-	%Screen.animation = "Class"
+	screen.animation = "Class"
 	
-	for classmate in classmates:
-		classmate.initialize()
 	game_state = GameState.ACTIVE
 		
 func _area_blocked(_blocking_area:Area2D, blocked_area:Area2D, shape:CollisionShape2D) -> void:
@@ -68,15 +75,25 @@ func _update_blockings() -> void:
 		seeing_screen = true
 	
 func _process(delta: float) -> void:
-	if game_state != GameState.ACTIVE: return
+	if game_state != GameState.ACTIVE: 
+		if writing_audio.playing: writing_audio.stop()
+		return
 	
 	if seeing_screen:
-		progress += 0.2 * delta
+		if !writing_audio.playing: writing_audio.play()
+		if !pencil_audio.playing:
+			var rng :float = randf()
+			if rng < 0.01: pencil_audio.play()
+		
+		progress += progress_speed * delta
 		%ProgressBar.value = progress
 		
 		if progress >= 1:
 			game_state = GameState.OVER
 			win.emit()
+		return
+	if writing_audio.playing: writing_audio.stop()
+	
 			
 func _game_over() -> void:
 	#for mate in classmates:
@@ -84,14 +101,15 @@ func _game_over() -> void:
 	
 	game_state = GameState.OVER
 	_hide_classmates()
-	%Screen.animation = "Over"
+	screen.animation = "Over"
 	
-#func _game_won() -> void:
-	#for mate in classmates:
-		#mate.stop()
+func _game_won() -> void:
+	game_state = GameState.OVER
 	
 func _hide_classmates() -> void:
-	$BackgroundPara3.hide()
+	$MidGround2Para.hide()
 	
 func _show_classmates() -> void:
-	$BackgroundPara3.show()
+	$MidGround2Para.show()
+	for mate in classmates:
+		mate.appear(mate.initialize)

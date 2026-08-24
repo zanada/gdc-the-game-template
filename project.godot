@@ -23,6 +23,12 @@ GameManager="*uid://chs5h40m667kc"
 
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://micro_games/note_taking/": "teal"
+}
+
 [input]
 
 up={

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bluw6lhlwvev6"
-path="res://.godot/imported/Layer 3.png-3a3394bdef6a3147a591f49a9e5e77ae.ctex"
+path="res://.godot/imported/Layer 3.png-13077fc670322900eb134076ccaf7039.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/note_taking/assets/Layer 3.png"
-dest_files=["res://.godot/imported/Layer 3.png-3a3394bdef6a3147a591f49a9e5e77ae.ctex"]
+source_file="res://micro_games/note_taking/assets/images/Layer 3.png"
+dest_files=["res://.godot/imported/Layer 3.png-13077fc670322900eb134076ccaf7039.ctex"]
 
 [params]
 

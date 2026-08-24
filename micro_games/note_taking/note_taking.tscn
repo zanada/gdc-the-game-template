@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://c4oahf3njy88o"]
 
 [ext_resource type="Script" uid="uid://cgpsy4y7j6bgj" path="res://micro_games/note_taking/scripts/note_taking.gd" id="1_c767q"]
-[ext_resource type="Texture2D" uid="uid://bbkr82ex4n8bw" path="res://micro_games/note_taking/assets/Layer 1.png" id="2_axxmt"]
-[ext_resource type="Texture2D" uid="uid://wo0pwcthmj68" path="res://micro_games/note_taking/assets/Layer 6.png" id="3_drbge"]
-[ext_resource type="Texture2D" uid="uid://4kl6me76ilhx" path="res://micro_games/note_taking/assets/slides/slides2.png" id="3_u8474"]
-[ext_resource type="Texture2D" uid="uid://cu0yakr0plp65" path="res://micro_games/note_taking/assets/slides/slides3.png" id="4_8qtc8"]
-[ext_resource type="Texture2D" uid="uid://bwld1cwjl3gkv" path="res://micro_games/note_taking/assets/Layer 4.png" id="5_4vl32"]
-[ext_resource type="Texture2D" uid="uid://c0ji6g3fkr1l4" path="res://micro_games/note_taking/assets/slides/slides1.png" id="5_bccr6"]
+[ext_resource type="Texture2D" uid="uid://bbkr82ex4n8bw" path="res://micro_games/note_taking/assets/images/Layer 1.png" id="2_axxmt"]
+[ext_resource type="Texture2D" uid="uid://wo0pwcthmj68" path="res://micro_games/note_taking/assets/images/Layer 6.png" id="3_drbge"]
+[ext_resource type="Texture2D" uid="uid://4kl6me76ilhx" path="res://micro_games/note_taking/assets/images/slides/slides2.png" id="3_u8474"]
+[ext_resource type="Texture2D" uid="uid://cu0yakr0plp65" path="res://micro_games/note_taking/assets/images/slides/slides3.png" id="4_8qtc8"]
+[ext_resource type="Texture2D" uid="uid://bwld1cwjl3gkv" path="res://micro_games/note_taking/assets/images/Layer 4.png" id="5_4vl32"]
+[ext_resource type="Texture2D" uid="uid://c0ji6g3fkr1l4" path="res://micro_games/note_taking/assets/images/slides/slides1.png" id="5_bccr6"]
 [ext_resource type="Script" uid="uid://bh1abs6yi3d20" path="res://micro_games/note_taking/scripts/focus.gd" id="6_drbge"]
 [ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/classmate.tscn" id="6_u8474"]
 [ext_resource type="Curve" uid="uid://bc7fuynr3tf1r" path="res://micro_games/note_taking/look_curve.tres" id="7_c767q"]
-[ext_resource type="Texture2D" uid="uid://cudk20b7f0n3s" path="res://micro_games/note_taking/assets/center_arrows.png" id="9_b7p2f"]
-[ext_resource type="Texture2D" uid="uid://dbwys3astsev1" path="res://micro_games/note_taking/assets/Layer 10.png" id="10_8qtc8"]
+[ext_resource type="Texture2D" uid="uid://cudk20b7f0n3s" path="res://micro_games/note_taking/assets/images/center_arrows.png" id="9_b7p2f"]
+[ext_resource type="Texture2D" uid="uid://dbwys3astsev1" path="res://micro_games/note_taking/assets/images/Layer 10.png" id="10_8qtc8"]
 [ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="10_r108p"]
+[ext_resource type="AudioStream" uid="uid://bw6nb0el2etk1" path="res://micro_games/note_taking/assets/sfx/pencil.wav" id="14_8qtc8"]
+[ext_resource type="AudioStream" uid="uid://cwutyxite8nh5" path="res://micro_games/note_taking/assets/sfx/writing_loop.wav" id="14_bccr6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj0jj"]
 animations = [{
@@ -47,9 +49,21 @@ bg_color = Color(0.8827, 0.90954506, 0.91, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7p2f"]
 bg_color = Color(0.5136, 0.6, 0.16799998, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uj0jj"]
+random_pitch = 1.133342
+random_volume_offset_db = 1.03
+streams_count = 1
+stream_0/stream = ExtResource("14_bccr6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bccr6"]
+random_pitch = 1.0912008
+random_volume_offset_db = 1.03
+streams_count = 1
+stream_0/stream = ExtResource("14_8qtc8")
+
 [node name="NoteTaking" type="Node2D" unique_id=1748513247 node_paths=PackedStringArray("classmates")]
 script = ExtResource("1_c767q")
-classmates = [NodePath("BackgroundPara3/MiddleMate"), NodePath("BackgroundPara3/LeftMate"), NodePath("BackgroundPara3/RightMate")]
+classmates = [NodePath("MidGround2Para/MiddleMate"), NodePath("MidGround2Para/LeftMate"), NodePath("MidGround2Para/RightMate")]
 control_format = 0
 lose_on_timeout = true
 game_duration = 8.0
@@ -60,13 +74,13 @@ metadata/_custom_type_script = "uid://c6chk3rdyriqb"
 [node name="BackgroundPara" type="Parallax2D" parent="." unique_id=2015070463]
 scroll_scale = Vector2(0.01, 0.01)
 
-[node name="Sprite2D" type="Sprite2D" parent="BackgroundPara" unique_id=1192158094]
+[node name="BackgroundSprite" type="Sprite2D" parent="BackgroundPara" unique_id=1192158094]
 texture_filter = 1
 scale = Vector2(0.96, 0.96)
 texture = ExtResource("2_axxmt")
 centered = false
 
-[node name="Screen" type="AnimatedSprite2D" parent="BackgroundPara" unique_id=468159917]
+[node name="ScreenAnim" type="AnimatedSprite2D" parent="BackgroundPara" unique_id=468159917]
 unique_name_in_owner = true
 position = Vector2(576, 286)
 sprite_frames = SubResource("SpriteFrames_uj0jj")
@@ -123,24 +137,25 @@ gizmo_extents = 30.8
 position = Vector2(706.8, 294.8)
 gizmo_extents = 30.8
 
-[node name="BackgroundPara2" type="Parallax2D" parent="." unique_id=2133093075]
+[node name="MidGround1Para" type="Parallax2D" parent="." unique_id=2133093075]
 scroll_scale = Vector2(0.3, 0.3)
 
-[node name="Sprite2D" type="Sprite2D" parent="BackgroundPara2" unique_id=101397768]
+[node name="MidDesk" type="Sprite2D" parent="MidGround1Para" unique_id=101397768]
 texture_filter = 1
 scale = Vector2(0.96, 0.96)
 texture = ExtResource("3_drbge")
 centered = false
 
-[node name="BackgroundPara3" type="Parallax2D" parent="." unique_id=111218618]
+[node name="MidGround2Para" type="Parallax2D" parent="." unique_id=111218618]
 scroll_scale = Vector2(0.5, 0.5)
 
-[node name="MiddleMate" parent="BackgroundPara3" unique_id=217247468 instance=ExtResource("6_u8474")]
+[node name="MiddleMate" parent="MidGround2Para" unique_id=217247468 instance=ExtResource("6_u8474")]
 position = Vector2(576, 408)
-vertical_range = Vector2(-100, 0)
-horizontal_range = Vector2(-150, 150)
+vertical_range = Vector2(-75, 20)
+horizontal_range = Vector2(-130, 130)
+rest_time_max = 2.5
 
-[node name="LeftMate" parent="BackgroundPara3" unique_id=745681084 instance=ExtResource("6_u8474")]
+[node name="LeftMate" parent="MidGround2Para" unique_id=745681084 instance=ExtResource("6_u8474")]
 position = Vector2(194.99998, 444.99997)
 scale = Vector2(0.905, 0.905)
 vertical_range = Vector2(-20, 0)
@@ -149,7 +164,7 @@ rest_time_min = 1.5
 rest_time_max = 2.5
 move_time = 0.8
 
-[node name="RightMate" parent="BackgroundPara3" unique_id=354082559 instance=ExtResource("6_u8474")]
+[node name="RightMate" parent="MidGround2Para" unique_id=354082559 instance=ExtResource("6_u8474")]
 position = Vector2(964.00006, 444.99997)
 scale = Vector2(0.905, 0.905)
 vertical_range = Vector2(-20, 0)
@@ -158,16 +173,16 @@ rest_time_min = 1.5
 rest_time_max = 2.5
 move_time = 0.8
 
-[node name="BackgroundPara4" type="Parallax2D" parent="." unique_id=569702978]
+[node name="ForegroundPara" type="Parallax2D" parent="." unique_id=569702978]
 
-[node name="Sprite2D" type="Sprite2D" parent="BackgroundPara4" unique_id=1631974998]
+[node name="Desk" type="Sprite2D" parent="ForegroundPara" unique_id=1631974998]
 texture_filter = 1
 scale = Vector2(0.96, 0.96)
 texture = ExtResource("5_4vl32")
 centered = false
 
-[node name="Sprite2D2" type="Sprite2D" parent="BackgroundPara4/Sprite2D" unique_id=2027451563]
-position = Vector2(600, 337.5)
+[node name="Hand" type="Sprite2D" parent="ForegroundPara/Desk" unique_id=2027451563]
+position = Vector2(544.7917, 337.5)
 texture = ExtResource("10_8qtc8")
 
 [node name="Focus" type="Node2D" parent="." unique_id=537965465]
@@ -175,14 +190,14 @@ position = Vector2(576, 324)
 script = ExtResource("6_drbge")
 max_distance = 250.0
 curve = ExtResource("7_c767q")
+focus_param = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Focus" unique_id=742986435]
-limit_top = -120
-limit_bottom = 745
+ignore_rotation = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=947669176]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=134049253]
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=134049253]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -190,7 +205,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control" unique_id=1741888067]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HUD" unique_id=1741888067]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.009548611
@@ -202,21 +217,21 @@ offset_bottom = -0.1760025
 theme_override_styles/panel = SubResource("StyleBoxFlat_4vl32")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer" unique_id=2021349881]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/PanelContainer" unique_id=2021349881]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/PanelContainer/MarginContainer" unique_id=337778376]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD/PanelContainer/MarginContainer" unique_id=337778376]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_b7p2f")
 max_value = 1.0
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=303107880]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD" unique_id=303107880]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -226,16 +241,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer" unique_id=1664559536]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/CenterContainer" unique_id=1664559536]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 texture = ExtResource("9_b7p2f")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer" unique_id=925272645]
+[node name="Control" type="Control" parent="CanvasLayer/HUD/CenterContainer" unique_id=925272645]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Control" unique_id=1055410746]
+[node name="Label" type="Label" parent="CanvasLayer/HUD/CenterContainer/Control" unique_id=1055410746]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -252,3 +267,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_r108p")
 theme_override_font_sizes/font_size = 29
 text = "start mouse here"
+
+[node name="WritingAudio" type="AudioStreamPlayer" parent="." unique_id=1371389861]
+stream = SubResource("AudioStreamRandomizer_uj0jj")
+
+[node name="PencilAudio" type="AudioStreamPlayer" parent="." unique_id=1909253075]
+stream = SubResource("AudioStreamRandomizer_bccr6")

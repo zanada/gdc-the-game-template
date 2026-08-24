@@ -10,6 +10,8 @@ class_name NT_Classmate
 
 @export var move_time : float = 0.4
 
+@onready var sprite :Sprite2D = $Sprite2D
+
 var active :bool = false
 var origin : Vector2
 
@@ -50,3 +52,12 @@ func _move() -> void:
 	
 func _random_time() -> float:
 	return randf_range(rest_time_min, rest_time_max)
+	
+func appear(callback = null) -> void:
+	var original_scale = sprite.scale.y
+	sprite.scale.y = 0
+	var tween :Tween = create_tween()\
+	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(sprite, "scale:y", original_scale, 0.4)
+	if callback:
+		tween.tween_callback(callback)

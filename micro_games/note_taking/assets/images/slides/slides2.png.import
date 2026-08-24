@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xp2m66chd0dr"
-path="res://.godot/imported/Layer 3 Copy.png-33bc47f7fd9e3798debc841d78d26885.ctex"
+uid="uid://4kl6me76ilhx"
+path="res://.godot/imported/slides2.png-346e6d5e86d91690f7ad10c70857e7fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/note_taking/assets/Layer 3 Copy.png"
-dest_files=["res://.godot/imported/Layer 3 Copy.png-33bc47f7fd9e3798debc841d78d26885.ctex"]
+source_file="res://micro_games/note_taking/assets/images/slides/slides2.png"
+dest_files=["res://.godot/imported/slides2.png-346e6d5e86d91690f7ad10c70857e7fd.ctex"]
 
 [params]
 
