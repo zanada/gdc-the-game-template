@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bluw6lhlwvev6"
-path="res://.godot/imported/Layer 3.png-13077fc670322900eb134076ccaf7039.ctex"
+uid="uid://c4chiuqa5l57i"
+path="res://.godot/imported/classmate_generic.png-58751b9dd528d4f35155908d0f4ad840.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/note_taking/assets/images/Layer 3.png"
-dest_files=["res://.godot/imported/Layer 3.png-13077fc670322900eb134076ccaf7039.ctex"]
+source_file="res://micro_games/note_taking/assets/art/classmate_generic.png"
+dest_files=["res://.godot/imported/classmate_generic.png-58751b9dd528d4f35155908d0f4ad840.ctex"]
 
 [params]
 

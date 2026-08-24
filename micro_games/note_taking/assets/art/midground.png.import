@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ji6g3fkr1l4"
-path="res://.godot/imported/slides1.png-b1050a5207448c028f2c9bb9ecab407d.ctex"
+uid="uid://y1bqiy0sgdvx"
+path="res://.godot/imported/midground.png-5b810d40365dd7b085754b431a2ac875.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/note_taking/assets/images/slides/slides1.png"
-dest_files=["res://.godot/imported/slides1.png-b1050a5207448c028f2c9bb9ecab407d.ctex"]
+source_file="res://micro_games/note_taking/assets/art/midground.png"
+dest_files=["res://.godot/imported/midground.png-5b810d40365dd7b085754b431a2ac875.ctex"]
 
 [params]
 

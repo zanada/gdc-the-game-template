@@ -10,5 +10,7 @@ authors = "Saaz"
 description = "Move your mouse to see the slides and write your notes before the professor moves on."
 instruction = "Look at the slides!"
 game_scene = ExtResource("1_1p2h3")
+width = 1280
+height = 720
 control_format = 0
 metadata/_custom_type_script = "uid://dciiueikp53p7"

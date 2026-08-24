@@ -42,8 +42,16 @@ func _ready() -> void:
 	lose.connect(_game_over)
 	win.connect(_game_won)
 	
+	# set writing to loop
 	writing_audio.finished.connect(func(): writing_audio.play())
-	#_game_start()
+	
+	if is_launched_via_f6():
+		get_window().content_scale_size = Vector2i(1280, 720)
+		#get_viewport().size_2d_override.x = info.width
+		#get_viewport().size_2d_override.y = info.height
+		enter_animation.emit()
+		await get_tree().create_timer(pre_game_time).timeout
+		start.emit()
 
 func _intro() -> void:
 	await get_tree().create_timer(2.0 * pre_game_time / 3.0).timeout
@@ -113,3 +121,11 @@ func _show_classmates() -> void:
 	$MidGround2Para.show()
 	for mate in classmates:
 		mate.appear(mate.initialize)
+		
+		
+# for debugging
+func is_launched_via_f6() -> bool:
+	var main_setting = ProjectSettings.get_setting("application/run/main_scene")
+	var main_scene_path = ResourceUID.get_id_path(ResourceUID.text_to_id(main_setting))
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	return current_scene_path != main_scene_path

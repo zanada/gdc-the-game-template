@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwld1cwjl3gkv"
-path="res://.godot/imported/Layer 4.png-a7a613e4d874f97c335bebf6e44de281.ctex"
+uid="uid://bluw6lhlwvev6"
+path="res://.godot/imported/Layer 3.png-dd3b34dd99deea06aa81f5c778325d69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/note_taking/assets/images/Layer 4.png"
-dest_files=["res://.godot/imported/Layer 4.png-a7a613e4d874f97c335bebf6e44de281.ctex"]
+source_file="res://micro_games/note_taking/assets/art/Layer 3.png"
+dest_files=["res://.godot/imported/Layer 3.png-dd3b34dd99deea06aa81f5c778325d69.ctex"]
 
 [params]
 

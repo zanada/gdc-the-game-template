@@ -1,23 +1,22 @@
 [gd_scene format=3 uid="uid://dvt400a3pulxd"]
 
 [ext_resource type="Script" uid="uid://b42esg5nac5bq" path="res://micro_games/note_taking/scripts/classmate.gd" id="1_t73a1"]
-[ext_resource type="Texture2D" uid="uid://bluw6lhlwvev6" path="res://micro_games/note_taking/assets/images/Layer 3.png" id="1_wq8vj"]
+[ext_resource type="Texture2D" uid="uid://c4chiuqa5l57i" path="res://micro_games/note_taking/assets/art/classmate_generic.png" id="2_t73a1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t73a1"]
-radius = 120.629486
+radius = 54.179996
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rw4id"]
-radius = 132.42345
-height = 294.4942
+radius = 47.04
+height = 104.160034
 
 [node name="Classmate" type="Node2D" unique_id=745681084]
 script = ExtResource("1_t73a1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=217247468]
-texture_filter = 1
-position = Vector2(21.999998, 241)
-scale = Vector2(0.85, 0.85)
-texture = ExtResource("1_wq8vj")
+position = Vector2(365, 816)
+scale = Vector2(2, 2)
+texture = ExtResource("2_t73a1")
 centered = false
 offset = Vector2(-599.075, -676.645)
 
@@ -25,9 +24,9 @@ offset = Vector2(-599.075, -676.645)
 scale = Vector2(1.1904762, 1.1904762)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1825927381]
-position = Vector2(-27.670586, -296.47058)
+position = Vector2(-153.3, -362.46)
 shape = SubResource("CircleShape2D_t73a1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=682932763]
-position = Vector2(-11.858878, -38.54119)
+position = Vector2(-153.3, -263.34003)
 shape = SubResource("CapsuleShape2D_rw4id")
