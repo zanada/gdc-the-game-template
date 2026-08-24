@@ -46,6 +46,7 @@ score_up_transtion = ExtResource("5_ewj8m")
 lives_down_transtion = ExtResource("5_ewj8m")
 release_pack = ExtResource("3_bg6tk")
 test_pack = ExtResource("4_87ans")
+game_pack_selection = 1
 game_selector = SubResource("Resource_bsumw")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=778280988]

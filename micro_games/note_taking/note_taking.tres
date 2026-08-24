@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MicroGameInfo" format=3 uid="uid://co12j37mxsdom"]
+
+[ext_resource type="PackedScene" uid="uid://c4oahf3njy88o" path="res://micro_games/note_taking/note_taking.tscn" id="1_1p2h3"]
+[ext_resource type="Script" uid="uid://dciiueikp53p7" path="res://main/micro_game_info.gd" id="2_5amnl"]
+
+[resource]
+script = ExtResource("2_5amnl")
+title = "Note Taking"
+authors = "Saaz"
+description = "Move your mouse to see the slides and write your notes before the professor moves on."
+instruction = "See the slides!"
+game_scene = ExtResource("1_1p2h3")
+control_format = 0
+metadata/_custom_type_script = "uid://dciiueikp53p7"
