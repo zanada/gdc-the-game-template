@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cu0yakr0plp65" path="res://micro_games/note_taking/assets/art/slides/slides3.png" id="4_8qtc8"]
 [ext_resource type="Texture2D" uid="uid://c0ji6g3fkr1l4" path="res://micro_games/note_taking/assets/art/slides/slides1.png" id="5_bccr6"]
 [ext_resource type="Script" uid="uid://bh1abs6yi3d20" path="res://micro_games/note_taking/scripts/focus.gd" id="6_drbge"]
+[ext_resource type="Texture2D" uid="uid://bjduk6wtrvadq" path="res://micro_games/note_taking/assets/art/back_midground.png" id="6_druqm"]
 [ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/classmate.tscn" id="6_u8474"]
 [ext_resource type="Texture2D" uid="uid://y1bqiy0sgdvx" path="res://micro_games/note_taking/assets/art/midground.png" id="6_uj0jj"]
 [ext_resource type="Curve" uid="uid://bc7fuynr3tf1r" path="res://micro_games/note_taking/look_curve.tres" id="7_c767q"]
@@ -62,7 +63,7 @@ streams_count = 1
 stream_0/stream = ExtResource("14_8qtc8")
 
 [node name="NoteTaking" type="Node2D" unique_id=1748513247 node_paths=PackedStringArray("classmates")]
-texture_filter = 1
+texture_filter = 2
 script = ExtResource("1_c767q")
 classmates = [NodePath("MidGround2Para/MiddleMate"), NodePath("MidGround2Para/LeftMate"), NodePath("MidGround2Para/RightMate")]
 control_format = 0
@@ -76,7 +77,7 @@ metadata/_custom_type_script = "uid://c6chk3rdyriqb"
 scroll_scale = Vector2(0.01, 0.01)
 
 [node name="BackgroundSprite" type="Sprite2D" parent="BackgroundPara" unique_id=1192158094]
-position = Vector2(-200, -100)
+position = Vector2(-280, -120)
 scale = Vector2(2, 2)
 texture = ExtResource("2_bccr6")
 centered = false
@@ -138,17 +139,26 @@ gizmo_extents = 30.8
 position = Vector2(706.8, 294.8)
 gizmo_extents = 30.8
 
+[node name="BackMidgroundPara" type="Parallax2D" parent="." unique_id=592363173]
+scroll_scale = Vector2(0.1, 0.1)
+
+[node name="MidDesk" type="Sprite2D" parent="BackMidgroundPara" unique_id=421588753]
+position = Vector2(-280, -120)
+scale = Vector2(2, 2)
+texture = ExtResource("6_druqm")
+centered = false
+
 [node name="MidGround1Para" type="Parallax2D" parent="." unique_id=2133093075]
-scroll_scale = Vector2(0.3, 0.3)
+scroll_scale = Vector2(0.25, 0.25)
 
 [node name="MidDesk" type="Sprite2D" parent="MidGround1Para" unique_id=101397768]
-position = Vector2(-200, -100)
+position = Vector2(-280, -120)
 scale = Vector2(2, 2)
 texture = ExtResource("6_uj0jj")
 centered = false
 
 [node name="MidGround2Para" type="Parallax2D" parent="." unique_id=111218618]
-scroll_scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.45, 0.45)
 
 [node name="MiddleMate" parent="MidGround2Para" unique_id=217247468 instance=ExtResource("6_u8474")]
 position = Vector2(646, 449)
@@ -177,14 +187,14 @@ move_time = 0.8
 [node name="ForegroundPara" type="Parallax2D" parent="." unique_id=569702978]
 
 [node name="Desk" type="Sprite2D" parent="ForegroundPara" unique_id=1631974998]
-position = Vector2(-200, -100)
+position = Vector2(-280, -120)
 scale = Vector2(2, 2)
 texture = ExtResource("8_druqm")
 centered = false
 
-[node name="Hand" type="Sprite2D" parent="ForegroundPara/Desk" unique_id=2027451563]
-position = Vector2(404, 246)
-scale = Vector2(0.45, 0.45)
+[node name="Hand" type="Sprite2D" parent="ForegroundPara" unique_id=2027451563]
+position = Vector2(646, 388)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("10_8qtc8")
 
 [node name="Focus" type="Node2D" parent="." unique_id=537965465]
