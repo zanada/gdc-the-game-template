@@ -63,7 +63,7 @@ streams_count = 1
 stream_0/stream = ExtResource("14_8qtc8")
 
 [node name="NoteTaking" type="Node2D" unique_id=1748513247 node_paths=PackedStringArray("classmates")]
-texture_filter = 2
+texture_filter = 1
 script = ExtResource("1_c767q")
 classmates = [NodePath("MidGround2Para/MiddleMate"), NodePath("MidGround2Para/LeftMate"), NodePath("MidGround2Para/RightMate")]
 control_format = 0
@@ -201,7 +201,7 @@ texture = ExtResource("10_8qtc8")
 [node name="Focus" type="Node2D" parent="." unique_id=537965465]
 position = Vector2(1009, 609)
 script = ExtResource("6_drbge")
-max_distance = 250.0
+max_distance = 375.0
 curve = ExtResource("7_c767q")
 focus_param = 2.0
 tilt = 8.0
