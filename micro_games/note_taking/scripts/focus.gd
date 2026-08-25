@@ -22,7 +22,7 @@ func _look(mouse_pos: Vector2):
 	
 	position = origin + direction * _basic_scaling(magnitude)
 	var h_distance :float = position.x - origin.x
-	$Camera2D.rotation_degrees = tilt * h_distance
+	$Camera2D.rotation = atan(h_distance/(1000*tilt)) #tilt * h_distance
 	
 func _limit_scaling(x: float) -> float:
 	return min(x, max_distance)

@@ -7,26 +7,28 @@
 radius = 54.179996
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rw4id"]
-radius = 47.04
-height = 104.160034
+radius = 69.299995
+height = 158.76
 
 [node name="Classmate" type="Node2D" unique_id=745681084]
 script = ExtResource("1_t73a1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=217247468]
-position = Vector2(365, 816)
-scale = Vector2(2, 2)
+position = Vector2(548, 1246)
+scale = Vector2(3, 3)
 texture = ExtResource("2_t73a1")
 centered = false
 offset = Vector2(-599.075, -676.645)
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=642049347]
-scale = Vector2(1.1904762, 1.1904762)
+[node name="Area2D" type="Area2D" parent="." unique_id=642049347]
+position = Vector2(365, 816)
+scale = Vector2(2.3809524, 2.3809524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1825927381]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1825927381]
 position = Vector2(-153.3, -362.46)
+scale = Vector2(1.4497807, 1.4497807)
 shape = SubResource("CircleShape2D_t73a1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=682932763]
-position = Vector2(-153.3, -263.34003)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=682932763]
+position = Vector2(-153.3, -212.94)
 shape = SubResource("CapsuleShape2D_rw4id")

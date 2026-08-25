@@ -77,14 +77,15 @@ metadata/_custom_type_script = "uid://c6chk3rdyriqb"
 scroll_scale = Vector2(0.01, 0.01)
 
 [node name="BackgroundSprite" type="Sprite2D" parent="BackgroundPara" unique_id=1192158094]
-position = Vector2(-280, -120)
-scale = Vector2(2, 2)
+position = Vector2(-420, -180)
+scale = Vector2(3, 3)
 texture = ExtResource("2_bccr6")
 centered = false
 
 [node name="ScreenAnim" type="AnimatedSprite2D" parent="BackgroundPara" unique_id=468159917]
 unique_name_in_owner = true
-position = Vector2(639, 318)
+position = Vector2(955, 480)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_uj0jj")
 animation = &"Welcome"
 
@@ -92,59 +93,59 @@ animation = &"Welcome"
 unique_name_in_owner = true
 
 [node name="Marker2D" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=591597741]
-position = Vector2(444.8, 220.8)
+position = Vector2(743.8, 389.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D2" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=1781582920]
-position = Vector2(444.8, 364.8)
+position = Vector2(743.8, 593.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D3" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=566427693]
-position = Vector2(444.8, 294.8)
+position = Vector2(743.8, 486.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D4" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=1724273957]
-position = Vector2(538.8, 220.8)
+position = Vector2(891.8, 389.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D5" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=715363016]
-position = Vector2(538.8, 364.8)
+position = Vector2(891.8, 593.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D6" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=410917394]
-position = Vector2(538.8, 294.8)
+position = Vector2(891.8, 486.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D10" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=139183223]
-position = Vector2(626.8, 220.8)
+position = Vector2(1035.8, 389.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D11" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=1167775951]
-position = Vector2(626.8, 364.8)
+position = Vector2(1035.8, 593.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D12" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=2068484303]
-position = Vector2(626.8, 294.8)
+position = Vector2(1035.8, 486.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D7" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=134134512]
-position = Vector2(706.8, 220.8)
+position = Vector2(1163.8, 389.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D8" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=151360324]
-position = Vector2(706.8, 364.8)
+position = Vector2(1163.8, 593.8)
 gizmo_extents = 30.8
 
 [node name="Marker2D9" type="Marker2D" parent="BackgroundPara/TestPoints" unique_id=95274907]
-position = Vector2(706.8, 294.8)
+position = Vector2(1163.8, 486.8)
 gizmo_extents = 30.8
 
 [node name="BackMidgroundPara" type="Parallax2D" parent="." unique_id=592363173]
 scroll_scale = Vector2(0.1, 0.1)
 
 [node name="MidDesk" type="Sprite2D" parent="BackMidgroundPara" unique_id=421588753]
-position = Vector2(-280, -120)
-scale = Vector2(2, 2)
+position = Vector2(-420, -180)
+scale = Vector2(3, 3)
 texture = ExtResource("6_druqm")
 centered = false
 
@@ -152,8 +153,8 @@ centered = false
 scroll_scale = Vector2(0.25, 0.25)
 
 [node name="MidDesk" type="Sprite2D" parent="MidGround1Para" unique_id=101397768]
-position = Vector2(-280, -120)
-scale = Vector2(2, 2)
+position = Vector2(-420, -180)
+scale = Vector2(3, 3)
 texture = ExtResource("6_uj0jj")
 centered = false
 
@@ -161,13 +162,13 @@ centered = false
 scroll_scale = Vector2(0.45, 0.45)
 
 [node name="MiddleMate" parent="MidGround2Para" unique_id=217247468 instance=ExtResource("6_u8474")]
-position = Vector2(646, 449)
+position = Vector2(962, 633)
 vertical_range = Vector2(-75, 20)
 horizontal_range = Vector2(-130, 130)
 rest_time_max = 2.5
 
 [node name="LeftMate" parent="MidGround2Para" unique_id=745681084 instance=ExtResource("6_u8474")]
-position = Vector2(265, 486)
+position = Vector2(303.00006, 652)
 scale = Vector2(0.905, 0.905)
 vertical_range = Vector2(-20, 0)
 horizontal_range = Vector2(-100, 100)
@@ -176,7 +177,7 @@ rest_time_max = 2.5
 move_time = 0.8
 
 [node name="RightMate" parent="MidGround2Para" unique_id=354082559 instance=ExtResource("6_u8474")]
-position = Vector2(1034.0001, 486)
+position = Vector2(1619.9999, 651.99994)
 scale = Vector2(0.905, 0.905)
 vertical_range = Vector2(-20, 0)
 horizontal_range = Vector2(-100, 100)
@@ -187,22 +188,23 @@ move_time = 0.8
 [node name="ForegroundPara" type="Parallax2D" parent="." unique_id=569702978]
 
 [node name="Desk" type="Sprite2D" parent="ForegroundPara" unique_id=1631974998]
-position = Vector2(-280, -120)
-scale = Vector2(2, 2)
+position = Vector2(-420, -180)
+scale = Vector2(3, 3)
 texture = ExtResource("8_druqm")
 centered = false
 
 [node name="Hand" type="Sprite2D" parent="ForegroundPara" unique_id=2027451563]
-position = Vector2(646, 388)
-scale = Vector2(0.9, 0.9)
+position = Vector2(744.00006, 720.00006)
+scale = Vector2(0.944776, 0.944776)
 texture = ExtResource("10_8qtc8")
 
 [node name="Focus" type="Node2D" parent="." unique_id=537965465]
-position = Vector2(576, 324)
+position = Vector2(1009, 609)
 script = ExtResource("6_drbge")
 max_distance = 250.0
 curve = ExtResource("7_c767q")
 focus_param = 2.0
+tilt = 8.0
 
 [node name="Camera2D" type="Camera2D" parent="Focus" unique_id=742986435]
 ignore_rotation = false
@@ -213,8 +215,8 @@ ignore_rotation = false
 layout_mode = 3
 anchor_right = 1.126
 anchor_bottom = 1.1110001
-offset_right = -17.1521
-offset_bottom = 0.07196045
+offset_right = 622.8479
+offset_bottom = 360.07196
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -283,6 +285,7 @@ theme_override_font_sizes/font_size = 29
 text = "start mouse here"
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD" unique_id=2120943668]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

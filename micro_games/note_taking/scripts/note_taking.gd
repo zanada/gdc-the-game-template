@@ -46,7 +46,7 @@ func _ready() -> void:
 	writing_audio.finished.connect(func(): writing_audio.play())
 	
 	if is_launched_via_f6():
-		get_window().content_scale_size = Vector2i(1280, 720)
+		get_window().content_scale_size = Vector2i(1920, 1080)
 		#get_viewport().size_2d_override.x = info.width
 		#get_viewport().size_2d_override.y = info.height
 		enter_animation.emit()
