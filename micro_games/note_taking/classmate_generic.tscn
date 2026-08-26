@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cd0xqsqpyr20t"]
+
+[ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/classmate.tscn" id="1_gonvc"]
+[ext_resource type="Texture2D" uid="uid://c4chiuqa5l57i" path="res://micro_games/note_taking/assets/art/classmate_generic.png" id="2_0lwhr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gonvc"]
+radius = 193.02332
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gonvc"]
+radius = 167.0
+height = 422.0
+
+[node name="Classmate" unique_id=745681084 instance=ExtResource("1_gonvc")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=217247468]
+position = Vector2(0, 388)
+texture = ExtResource("2_0lwhr")
+offset = Vector2(4.12, -174.205)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="0" unique_id=788139591]
+position = Vector2(3, -90)
+shape = SubResource("CircleShape2D_gonvc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="1" unique_id=288397829]
+position = Vector2(3, 288)
+shape = SubResource("CapsuleShape2D_gonvc")
