@@ -8,6 +8,7 @@ extends MicroGame
 @onready var pencil_audio: AudioStreamPlayer = $PencilAudio
 @onready var focus: Node2D = $Focus
 @onready var classmates_layer: Parallax2D = $Classmates
+@onready var progress_bar: ProgressBar = $%ProgressBar
 
 # scenes of students to choose from
 const possible_classmates: Array[PackedScene] = [
@@ -48,6 +49,10 @@ static func _on_screen_exited(screen: GameManager.Screen) -> void:
 		selected_classmates.clear()
 
 func _ready() -> void:
+	var launched_via_f6: bool = is_launched_via_f6()
+	if launched_via_f6:
+		get_window().content_scale_size = Vector2i(1920, 1080)
+		focus.initialize()
 	
 	# create area 2d's at marker positions
 	for child in %TestPoints.get_children():
@@ -71,13 +76,18 @@ func _ready() -> void:
 	
 	# loop for the amount of students that need to be added
 	assert(_required_classmates() + selected_classmates.size() <= student_positions.size())
-	for _i in range(_required_classmates()):
-		var mate_index : int
-		while true:
-			mate_index = randi() % possible_classmates.size()
-			if !selected_classmates.has(mate_index):
-				break
-		selected_classmates[mate_index] = true		
+	if launched_via_f6:
+		for i in range(possible_classmates.size()):
+			selected_classmates[i] = true
+			
+	else:
+		for _i in range(_required_classmates()):
+			var mate_index : int
+			while true:
+				mate_index = randi() % possible_classmates.size()
+				if !selected_classmates.has(mate_index):
+					break
+			selected_classmates[mate_index] = true		
 		
 	# add selected classmates in random order
 	var randomized_mates = selected_classmates.keys()
@@ -110,10 +120,6 @@ func _ready() -> void:
 	writing_audio.finished.connect(func(): writing_audio.play())
 	
 	if is_launched_via_f6():
-		get_window().content_scale_size = Vector2i(1920, 1080)
-		focus.initialize()
-		#get_viewport().size_2d_override.x = info.width
-		#get_viewport().size_2d_override.y = info.height
 		enter_animation.emit()
 		await get_tree().create_timer(pre_game_time).timeout
 		start.emit()
@@ -164,7 +170,7 @@ func _process(delta: float) -> void:
 			if rng < 0.01: pencil_audio.play()
 		
 		progress += progress_speed * delta
-		%ProgressBar.value = progress
+		progress_bar.value = progress
 		
 		if progress >= 1:
 			game_state = GameState.OVER
