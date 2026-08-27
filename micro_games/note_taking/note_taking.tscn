@@ -10,11 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://y1bqiy0sgdvx" path="res://micro_games/note_taking/assets/art/midground.png" id="6_uj0jj"]
 [ext_resource type="Curve" uid="uid://bc7fuynr3tf1r" path="res://micro_games/note_taking/look_curve.tres" id="7_c767q"]
 [ext_resource type="Texture2D" uid="uid://1xitkwn3a66" path="res://micro_games/note_taking/assets/art/foreground.png" id="8_druqm"]
-[ext_resource type="Texture2D" uid="uid://cudk20b7f0n3s" path="res://micro_games/note_taking/assets/art/center_arrows.png" id="9_b7p2f"]
 [ext_resource type="Texture2D" uid="uid://dbwys3astsev1" path="res://micro_games/note_taking/assets/art/Layer 10.png" id="10_8qtc8"]
-[ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="10_r108p"]
+[ext_resource type="Shader" uid="uid://c03yobgosixtx" path="res://micro_games/note_taking/scripts/scroll_texture.gdshader" id="13_bccr6"]
+[ext_resource type="Script" uid="uid://ck65st05y046c" path="res://micro_games/note_taking/scripts/progress_bar.gd" id="13_druqm"]
 [ext_resource type="AudioStream" uid="uid://bw6nb0el2etk1" path="res://micro_games/note_taking/assets/sfx/pencil.wav" id="14_8qtc8"]
 [ext_resource type="AudioStream" uid="uid://cwutyxite8nh5" path="res://micro_games/note_taking/assets/sfx/writing_loop.wav" id="14_bccr6"]
+[ext_resource type="Texture2D" uid="uid://h6kmjx182vgx" path="res://micro_games/note_taking/assets/art/progress_bar/bar_texture.png" id="14_uj0jj"]
+[ext_resource type="Texture2D" uid="uid://bkbk3hrivfae6" path="res://micro_games/note_taking/assets/art/progress_bar/bar_fill.png" id="17_wdd68"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj0jj"]
 animations = [{
@@ -43,11 +45,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vl32"]
-bg_color = Color(0.8827, 0.90954506, 0.91, 1)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uj0jj"]
+load_path = "res://.godot/imported/bar_background.png-2e4e7ac7f98fa0c13413285642e50edd.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7p2f"]
-bg_color = Color(0.5136, 0.6, 0.16799998, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_druqm"]
+texture = SubResource("CompressedTexture2D_uj0jj")
+texture_margin_left = 14.0
+texture_margin_top = 2.0
+texture_margin_right = 14.0
+texture_margin_bottom = 2.0
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtc8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n32jh"]
+texture = ExtResource("17_wdd68")
+texture_margin_left = 14.0
+texture_margin_top = 2.0
+texture_margin_right = 14.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bccr6"]
+shader = ExtResource("13_bccr6")
+shader_parameter/custom_texture = ExtResource("14_uj0jj")
+shader_parameter/inactive_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/active = 1.0
+shader_parameter/scroll_speed = 16.795
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uj0jj"]
 random_pitch = 1.133342
@@ -183,7 +206,7 @@ scale = Vector2(0.944776, 0.944776)
 texture = ExtResource("10_8qtc8")
 
 [node name="Focus" type="Node2D" parent="." unique_id=537965465]
-position = Vector2(1009, 609)
+position = Vector2(960, 540)
 script = ExtResource("6_drbge")
 max_distance = 375.0
 curve = ExtResource("7_c767q")
@@ -193,82 +216,21 @@ tilt = 8.0
 [node name="Camera2D" type="Camera2D" parent="Focus" unique_id=742986435]
 ignore_rotation = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=947669176]
-
-[node name="HUD" type="Control" parent="CanvasLayer" unique_id=134049253]
+[node name="HUD" type="Control" parent="Focus/Camera2D" unique_id=134049253]
+texture_filter = 1
 layout_mode = 3
-anchor_right = 1.126
-anchor_bottom = 1.1110001
-offset_right = 622.8479
-offset_bottom = 360.07196
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HUD" unique_id=1741888067]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.009548611
-anchor_top = 0.016975308
-anchor_right = 0.3553125
-anchor_bottom = 0.07897531
-offset_right = -0.3199997
-offset_bottom = -0.1760025
-theme_override_styles/panel = SubResource("StyleBoxFlat_4vl32")
-metadata/_edit_use_anchors_ = true
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/PanelContainer" unique_id=2021349881]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD/PanelContainer/MarginContainer" unique_id=337778376]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/fill = SubResource("StyleBoxFlat_b7p2f")
-max_value = 1.0
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD" unique_id=303107880]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -320.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/CenterContainer" unique_id=1664559536]
-custom_minimum_size = Vector2(250, 250)
-layout_mode = 2
-texture = ExtResource("9_b7p2f")
-expand_mode = 1
-
-[node name="Control" type="Control" parent="CanvasLayer/HUD/CenterContainer" unique_id=925272645]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/HUD/CenterContainer/Control" unique_id=1055410746]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -101.5
-offset_top = 123.205
-offset_right = 101.5
-offset_bottom = 149.20502
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("10_r108p")
-theme_override_font_sizes/font_size = 29
-text = "start mouse here"
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD" unique_id=2120943668]
+[node name="ColorRect" type="ColorRect" parent="Focus/Camera2D/HUD" unique_id=2120943668]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -277,6 +239,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.5936667, 1, 0.47000003, 0.24313726)
+
+[node name="ProgressBarContainer" type="Control" parent="Focus/Camera2D/HUD" unique_id=380871142]
+layout_mode = 1
+anchor_left = 0.027791644
+anchor_top = 0.047888882
+anchor_right = 0.46779197
+anchor_bottom = 0.13988891
+offset_left = -0.11999512
+offset_top = -0.23999786
+offset_right = 0.2800293
+offset_bottom = -0.3600006
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Focus/Camera2D/HUD/ProgressBarContainer" unique_id=84619264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_druqm")
+
+[node name="ProgressBar" type="ProgressBar" parent="Focus/Camera2D/HUD/ProgressBarContainer" unique_id=815555210]
+unique_name_in_owner = true
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_8qtc8")
+theme_override_styles/fill = SubResource("StyleBoxTexture_n32jh")
+max_value = 1.0
+step = 0.001
+value = 0.295
+show_percentage = false
+script = ExtResource("13_druqm")
+
+[node name="ScrollTexture" type="ColorRect" parent="Focus/Camera2D/HUD/ProgressBarContainer/ProgressBar" unique_id=1135794543]
+material = SubResource("ShaderMaterial_bccr6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="WritingAudio" type="AudioStreamPlayer" parent="." unique_id=1371389861]
 stream = SubResource("AudioStreamRandomizer_uj0jj")

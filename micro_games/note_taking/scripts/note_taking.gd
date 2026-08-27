@@ -8,7 +8,7 @@ extends MicroGame
 @onready var pencil_audio: AudioStreamPlayer = $PencilAudio
 @onready var focus: Node2D = $Focus
 @onready var classmates_layer: Parallax2D = $Classmates
-@onready var progress_bar: ProgressBar = $%ProgressBar
+@onready var progress_bar: ProgressBar = %ProgressBar
 
 # scenes of students to choose from
 const possible_classmates: Array[PackedScene] = [
@@ -49,6 +49,7 @@ static func _on_screen_exited(screen: GameManager.Screen) -> void:
 		selected_classmates.clear()
 
 func _ready() -> void:
+	
 	var launched_via_f6: bool = is_launched_via_f6()
 	if launched_via_f6:
 		get_window().content_scale_size = Vector2i(1920, 1080)
@@ -132,7 +133,6 @@ func _intro() -> void:
 	_show_classmates() 
 		
 func _game_start() -> void:
-	%CenterContainer.hide()
 	screen.animation = "Class"
 	
 	game_state = GameState.ACTIVE
@@ -140,20 +140,23 @@ func _game_start() -> void:
 func _area_blocked(_blocking_area:Area2D, blocked_area:Area2D, shape:CollisionShape2D) -> void:
 	blocked_areas[blocked_area] = true
 	shape.debug_color = Color("001eb36b")
-	_update_blockings() 
+	_update_viewing() 
 	
 func _area_unblocked(_blocking_area:Area2D, blocked_area:Area2D, shape:CollisionShape2D) -> void:
 	if !blocked_areas.has(blocked_area) or blocked_area.has_overlapping_areas(): return
 	blocked_areas.erase(blocked_area)
 	shape.debug_color = Color("0099b36b")
-	_update_blockings() 
+	_update_viewing() 
 	
-func _update_blockings() -> void:
+func _update_viewing() -> void:
 	#if game_state != GameState.ACTIVE: return
 	
 	if blocked_areas.size() >= sample_count/2:
 		seeing_screen = false
 		screen.modulate = Color.WHITE
+		
+		if game_state == GameState.ACTIVE:
+			progress_bar.active = false
 	else:
 		seeing_screen = true
 		screen.modulate = Color.WEB_GREEN
@@ -169,8 +172,10 @@ func _process(delta: float) -> void:
 			var rng :float = randf()
 			if rng < 0.01: pencil_audio.play()
 		
+		progress_bar.active = true
 		progress += progress_speed * delta
-		progress_bar.value = progress
+		# lying about the speed for excitement!
+		progress_bar.value = (progress * progress)
 		
 		if progress >= 1:
 			game_state = GameState.OVER
