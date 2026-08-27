@@ -153,13 +153,14 @@ func _update_viewing() -> void:
 	
 	if blocked_areas.size() >= sample_count/2:
 		seeing_screen = false
-		screen.modulate = Color.WHITE
+		#screen.modulate = Color.WHITE
 		
 		if game_state == GameState.ACTIVE:
 			progress_bar.active = false
+			%AnimationPlayer.pause()
 	else:
 		seeing_screen = true
-		screen.modulate = Color.WEB_GREEN
+		#screen.modulate = Color.WEB_GREEN
 	
 func _process(delta: float) -> void:
 	if game_state != GameState.ACTIVE: 
@@ -171,6 +172,7 @@ func _process(delta: float) -> void:
 		if !pencil_audio.playing:
 			var rng :float = randf()
 			if rng < 0.01: pencil_audio.play()
+		%AnimationPlayer.play("write")
 		
 		progress_bar.active = true
 		progress += progress_speed * delta
@@ -192,8 +194,12 @@ func _game_over() -> void:
 	_hide_classmates()
 	screen.animation = "Over"
 	
+	progress_bar.active = false
+	%AnimationPlayer.pause()
+	
 func _game_won() -> void:
 	game_state = GameState.OVER
+	%AnimationPlayer.pause()
 	
 func _hide_classmates() -> void:
 	classmates_layer.hide()

@@ -45,6 +45,64 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_druqm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(831, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(967, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_n32jh"]
+resource_name = "write"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0),
+"points": PackedFloat32Array(831, -0.25, 0, 0.25, 0, 847, -0.060000002, -2.6666667, 0, 0, 863, -0.053333335, -2.6666667, 0, 0, 885, -0.015351919, -3.3774223, 0.017981416, 3.9559114, 907, -0.05833333, -7.333334, 0, 0, 947, -0.06333333, -6.666667, 0, 0, 951, -0.018146306, -3.402432, 0.026298147, 4.9309015, 997, -0.050000012, -8.333333, 0, 0, 1014, -0.040000003, -2.8333333, 0, 0, 1028, -0.056666654, -2.3333333, 0, 0, 1018.9752, -0.014387441, 7.116692, 0.027616262, -13.660278, 921, -0.03333342, 31.53656, 0, 0, 831, -0.13265991, 22.188965, 0.25, 0),
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333, 0.32544485, 0.43333334, 0.5333333, 0.6666667, 0.8, 0.9, 0.96666664, 1.0333333, 1.1333334, 1.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0),
+"points": PackedFloat32Array(967, -0.25, 0, 0.25, 0, 959, -0.060000002, 1.3333334, 0, 0, 975, -0.053333335, -2.6666667, 0, 0, 958, -0.015351919, -0.0767596, 0.017981416, 0.08990708, 976, -0.05833333, -0.16666667, 0, 0, 958, -0.06333333, 3, 0, 0, 971, -0.018146306, -0.54438907, 0.026298147, 0.78894424, 966, -0.050000012, -1.3333334, 0, 0, 952, -0.040000003, 2.3333335, 0, 0, 953, -0.056666654, -0.16666667, 0, 0, 953, -0.023044687, 0, 0, 0, 973.027, -0.04210421, -1.6838568, 0.031051278, 1.2418213, 967, -0.14448106, -0.8031616, 0.25, 0),
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333, 0.32544485, 0.43333334, 0.5333333, 0.6666667, 0.8, 0.9, 0.96666664, 1.0333333, 1.1215123, 1.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n32jh"]
+_data = {
+&"RESET": SubResource("Animation_druqm"),
+&"write": SubResource("Animation_n32jh")
+}
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uj0jj"]
 load_path = "res://.godot/imported/bar_background.png-2e4e7ac7f98fa0c13413285642e50edd.ctex"
 
@@ -195,15 +253,20 @@ position = Vector2(1658, 698)
 [node name="ForegroundPara" type="Parallax2D" parent="." unique_id=569702978]
 
 [node name="Desk" type="Sprite2D" parent="ForegroundPara" unique_id=1631974998]
-position = Vector2(-420, -180)
-scale = Vector2(3, 3)
+position = Vector2(-714.03955, -409)
+scale = Vector2(3.6392164, 3.6392162)
 texture = ExtResource("8_druqm")
 centered = false
 
 [node name="Hand" type="Sprite2D" parent="ForegroundPara" unique_id=2027451563]
-position = Vector2(744.00006, 720.00006)
-scale = Vector2(0.944776, 0.944776)
+position = Vector2(831, 967)
 texture = ExtResource("10_8qtc8")
+region_enabled = true
+region_rect = Rect2(609, 537.5, 263, 137.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ForegroundPara" unique_id=900256628]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_n32jh")
 
 [node name="Focus" type="Node2D" parent="." unique_id=537965465]
 position = Vector2(960, 540)
