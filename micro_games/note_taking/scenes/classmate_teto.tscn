@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cpqtafahwoeio"]
+
+[ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/scenes/classmate.tscn" id="1_34ovs"]
+[ext_resource type="Texture2D" uid="uid://dudfj3nqlnleh" path="res://micro_games/note_taking/assets/art/classmates/teto.png" id="2_rwxxl"]
+
+[node name="Teto" unique_id=745681084 instance=ExtResource("1_34ovs")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=217247468]
+position = Vector2(0, 431.005)
+texture = ExtResource("2_rwxxl")
+offset = Vector2(0, -103.333336)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="0" unique_id=1242726623]
+polygon = PackedVector2Array(-170, 86, -245, -48, -279, -171, -141, -179, -67, -239, 57, -242, 132, -182, 278, -167, 249, -51, 172, 88, 141, 22, 39, 71, -41, 72, -134, 27)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="1" unique_id=510516786]
+polygon = PackedVector2Array(-124, 499, -99, 312, -170, 415, -186, 362, -152, 140, -16, 73, 147, 127, 187, 351, 171, 412, 106, 317, 126, 496)

@@ -7,9 +7,12 @@ extends Node2D
 
 var origin : Vector2
 
-func _ready() -> void:
+func initialize() -> void:
 	origin = get_viewport_rect().get_center()
 	position = origin
+
+func _ready() -> void:
+	initialize()
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:

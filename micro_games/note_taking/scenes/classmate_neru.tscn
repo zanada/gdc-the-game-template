@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bppvjdq0yj3ni"]
+
+[ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/scenes/classmate.tscn" id="1_3vuul"]
+[ext_resource type="Texture2D" uid="uid://c55atnomrodpi" path="res://micro_games/note_taking/assets/art/classmates/neru.png" id="2_1vlmq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vuul"]
+radius = 164.00305
+
+[node name="Neru" unique_id=745681084 instance=ExtResource("1_3vuul")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=217247468]
+position = Vector2(-28.295, 433.52)
+texture = ExtResource("2_1vlmq")
+offset = Vector2(0, -105)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="0" unique_id=1082533453]
+position = Vector2(0, -89)
+shape = SubResource("CircleShape2D_3vuul")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="1" unique_id=1645942884]
+polygon = PackedVector2Array(-116, -213, -147, -275, -226, -240, -276, -129, -250, 19, -191, 174, -247, 270, -104, 151, -144, 7)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="2" unique_id=1997401435]
+polygon = PackedVector2Array(-145, 490, 130, 492, 182, 282, 135, 123, 0, 81, -110, 116, -212, 283)

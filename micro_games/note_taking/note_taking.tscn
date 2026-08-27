@@ -11,11 +11,8 @@
 [ext_resource type="Curve" uid="uid://bc7fuynr3tf1r" path="res://micro_games/note_taking/look_curve.tres" id="7_c767q"]
 [ext_resource type="Texture2D" uid="uid://1xitkwn3a66" path="res://micro_games/note_taking/assets/art/foreground.png" id="8_druqm"]
 [ext_resource type="Texture2D" uid="uid://cudk20b7f0n3s" path="res://micro_games/note_taking/assets/art/center_arrows.png" id="9_b7p2f"]
-[ext_resource type="PackedScene" uid="uid://luwbjmyxig7u" path="res://micro_games/note_taking/classmate_miku.tscn" id="9_druqm"]
 [ext_resource type="Texture2D" uid="uid://dbwys3astsev1" path="res://micro_games/note_taking/assets/art/Layer 10.png" id="10_8qtc8"]
-[ext_resource type="PackedScene" uid="uid://cpqtafahwoeio" path="res://micro_games/note_taking/teto.tscn" id="10_n32jh"]
 [ext_resource type="FontFile" uid="uid://k63t7wblivm1" path="res://shared/fonts/BoldsPixels.ttf" id="10_r108p"]
-[ext_resource type="PackedScene" uid="uid://bppvjdq0yj3ni" path="res://micro_games/note_taking/neru.tscn" id="11_ncwjm"]
 [ext_resource type="AudioStream" uid="uid://bw6nb0el2etk1" path="res://micro_games/note_taking/assets/sfx/pencil.wav" id="14_8qtc8"]
 [ext_resource type="AudioStream" uid="uid://cwutyxite8nh5" path="res://micro_games/note_taking/assets/sfx/writing_loop.wav" id="14_bccr6"]
 
@@ -64,10 +61,10 @@ random_volume_offset_db = 1.03
 streams_count = 1
 stream_0/stream = ExtResource("14_8qtc8")
 
-[node name="NoteTaking" type="Node2D" unique_id=1748513247 node_paths=PackedStringArray("classmates")]
+[node name="NoteTaking" type="Node2D" unique_id=1748513247 node_paths=PackedStringArray("student_positions")]
 texture_filter = 1
 script = ExtResource("1_c767q")
-classmates = [NodePath("MidGround2Para/Miku"), NodePath("MidGround2Para/Teto"), NodePath("MidGround2Para/Neru")]
+student_positions = [NodePath("Classmates/MiddlePosition"), NodePath("Classmates/LeftPosition"), NodePath("Classmates/RightPosition")]
 control_format = 0
 lose_on_timeout = true
 game_duration = 8.0
@@ -160,28 +157,17 @@ scale = Vector2(3, 3)
 texture = ExtResource("6_uj0jj")
 centered = false
 
-[node name="MidGround2Para" type="Parallax2D" parent="." unique_id=111218618]
+[node name="Classmates" type="Parallax2D" parent="." unique_id=111218618]
 scroll_scale = Vector2(0.45, 0.45)
 
-[node name="Miku" parent="MidGround2Para" unique_id=1473296039 instance=ExtResource("9_druqm")]
-position = Vector2(962, 656)
-vertical_range = Vector2(-75, 20)
-horizontal_range = Vector2(-130, 130)
-rest_time_max = 2.5
+[node name="MiddlePosition" type="Marker2D" parent="Classmates" unique_id=900942495]
+position = Vector2(960, 656)
 
-[node name="Teto" parent="MidGround2Para" unique_id=745681084 instance=ExtResource("10_n32jh")]
+[node name="LeftPosition" type="Marker2D" parent="Classmates" unique_id=1077949753]
 position = Vector2(294, 698)
-vertical_range = Vector2(-20, 0)
-horizontal_range = Vector2(-100, 100)
-rest_time_min = 1.5
-rest_time_max = 2.5
 
-[node name="Neru" parent="MidGround2Para" unique_id=899016857 instance=ExtResource("11_ncwjm")]
+[node name="RightPosition" type="Marker2D" parent="Classmates" unique_id=609527660]
 position = Vector2(1658, 698)
-vertical_range = Vector2(-20, 0)
-horizontal_range = Vector2(-100, 100)
-rest_time_min = 1.5
-rest_time_max = 2.5
 
 [node name="ForegroundPara" type="Parallax2D" parent="." unique_id=569702978]
 

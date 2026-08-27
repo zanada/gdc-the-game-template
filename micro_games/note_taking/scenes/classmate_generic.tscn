@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cd0xqsqpyr20t"]
 
-[ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/classmate.tscn" id="1_gonvc"]
+[ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/scenes/classmate.tscn" id="1_gonvc"]
 [ext_resource type="Texture2D" uid="uid://c4chiuqa5l57i" path="res://micro_games/note_taking/assets/art/classmate_generic.png" id="2_0lwhr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gonvc"]

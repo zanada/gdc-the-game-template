@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://luwbjmyxig7u"]
+
+[ext_resource type="PackedScene" uid="uid://dvt400a3pulxd" path="res://micro_games/note_taking/scenes/classmate.tscn" id="1_e4r88"]
+[ext_resource type="Texture2D" uid="uid://dfqhdlluhlci0" path="res://micro_games/note_taking/assets/art/classmates/miku.png" id="2_j18ys"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4r88"]
+radius = 169.14491
+
+[node name="Miku" unique_id=745681084 instance=ExtResource("1_e4r88")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=217247468]
+position = Vector2(0, 437)
+texture = ExtResource("2_j18ys")
+offset = Vector2(0, -95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="0" unique_id=1570070354]
+position = Vector2(0, -89)
+shape = SubResource("CircleShape2D_e4r88")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="1" unique_id=1205022213]
+polygon = PackedVector2Array(-116, -223, -169, -262, -225, -244, -286, -27, -228, 232, -260, 425, -240, 544, -115, 432, -167, 204, -144, 7)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="2" unique_id=2004651077]
+polygon = PackedVector2Array(-119, 488, -162, 214, -151, 127, -13, 68, 110, 117, 125, 284, 123, 494)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" parent_id_path=PackedInt32Array(642049347) index="3" unique_id=337738702]
+polygon = PackedVector2Array(117, -221, 176, -262, 245, -253, 270, -78, 197, 140, 290, 368, 254, 519, 172, 402, 109, 157, 144, 8)
