@@ -25,6 +25,11 @@ var active: bool = false:
 				$ScrollTexture.material.get_shader_parameter("active"),
 				1.0, 0.1
 			)
+			#tween.tween_method(
+				#func(x): $ScrollTexture.material.set_shader_parameter("scroll_speed", x),
+				#$ScrollTexture.material.get_shader_parameter("scroll_speed"),
+				#50.0, 0.1
+			#)
 			
 		else:
 			active = false
@@ -43,6 +48,11 @@ var active: bool = false:
 				$ScrollTexture.material.get_shader_parameter("active"),
 				0.0, 0.2
 			)
+			#tween.tween_method(
+				#func(x): $ScrollTexture.material.set_shader_parameter("scroll_speed", x),
+				#$ScrollTexture.material.get_shader_parameter("scroll_speed"),
+				#0.0, 0.1
+			#)
 
 func _ready() -> void:
 	value = 0.0

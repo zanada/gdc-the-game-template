@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bw6nb0el2etk1" path="res://micro_games/note_taking/assets/sfx/pencil.wav" id="14_8qtc8"]
 [ext_resource type="AudioStream" uid="uid://cwutyxite8nh5" path="res://micro_games/note_taking/assets/sfx/writing_loop.wav" id="14_bccr6"]
 [ext_resource type="Texture2D" uid="uid://h6kmjx182vgx" path="res://micro_games/note_taking/assets/art/progress_bar/bar_texture.png" id="14_uj0jj"]
+[ext_resource type="Texture2D" uid="uid://kxw8cybeokgf" path="res://micro_games/note_taking/assets/art/progress_bar/bar_background.png" id="16_hwagk"]
 [ext_resource type="Texture2D" uid="uid://bkbk3hrivfae6" path="res://micro_games/note_taking/assets/art/progress_bar/bar_fill.png" id="17_wdd68"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj0jj"]
@@ -103,15 +104,12 @@ _data = {
 &"write": SubResource("Animation_n32jh")
 }
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uj0jj"]
-load_path = "res://.godot/imported/bar_background.png-2e4e7ac7f98fa0c13413285642e50edd.ctex"
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_druqm"]
-texture = SubResource("CompressedTexture2D_uj0jj")
-texture_margin_left = 14.0
-texture_margin_top = 2.0
-texture_margin_right = 14.0
-texture_margin_bottom = 2.0
+texture = ExtResource("16_hwagk")
+texture_margin_left = 15.0
+texture_margin_top = 3.0
+texture_margin_right = 15.0
+texture_margin_bottom = 3.0
 axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtc8"]
@@ -128,7 +126,7 @@ shader = ExtResource("13_bccr6")
 shader_parameter/custom_texture = ExtResource("14_uj0jj")
 shader_parameter/inactive_color = Color(0.3, 0.3, 0.3, 1)
 shader_parameter/active = 1.0
-shader_parameter/scroll_speed = 16.795
+shader_parameter/scroll_speed = 50.175
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uj0jj"]
 random_pitch = 1.133342
@@ -305,14 +303,14 @@ color = Color(0.5936667, 1, 0.47000003, 0.24313726)
 
 [node name="ProgressBarContainer" type="Control" parent="Focus/Camera2D/HUD" unique_id=380871142]
 layout_mode = 1
-anchor_left = 0.027791644
+anchor_left = 0.028312493
 anchor_top = 0.047888882
-anchor_right = 0.46779197
+anchor_right = 0.46831283
 anchor_bottom = 0.13988891
 offset_left = -0.11999512
 offset_top = -0.23999786
-offset_right = 0.2800293
-offset_bottom = -0.3600006
+offset_right = 0.27978516
+offset_bottom = 1.6399918
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -333,13 +331,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_8qtc8")
 theme_override_styles/fill = SubResource("StyleBoxTexture_n32jh")
 max_value = 1.0
 step = 0.001
-value = 0.295
+value = 1.0
 show_percentage = false
 script = ExtResource("13_druqm")
 
