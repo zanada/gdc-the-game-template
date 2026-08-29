@@ -99,10 +99,10 @@ func _ready() -> void:
 		
 		classmate.rest_time_max = 2.5
 		if i == 0:
-			classmate.vertical_range = Vector2(-75, 40)
+			classmate.vertical_range = Vector2(-75, 60)
 			classmate.horizontal_range = Vector2(-150, 150)
 		else:
-			classmate.vertical_range = Vector2(-20, 0)
+			classmate.vertical_range = Vector2(-20, 20)
 			classmate.horizontal_range = Vector2(-100, 100)
 			classmate.rest_time_min = 1.5
 		classmate.position = student_positions[i].position
@@ -114,7 +114,7 @@ func _ready() -> void:
 	# connect signals
 	enter_animation.connect(_intro)
 	start.connect(_game_start)
-	lose.connect(_game_over)
+	lose.connect(_game_lost)
 	win.connect(_game_won)
 	
 	# set writing to loop
@@ -186,7 +186,7 @@ func _process(delta: float) -> void:
 	if writing_audio.playing: writing_audio.stop()
 	
 			
-func _game_over() -> void:
+func _game_lost() -> void:
 	#for mate in classmates:
 		#mate.stop()
 	
@@ -197,9 +197,13 @@ func _game_over() -> void:
 	progress_bar.active = false
 	%AnimationPlayer.pause()
 	
+	$LoseAudio.play()
+	
 func _game_won() -> void:
 	game_state = GameState.OVER
 	%AnimationPlayer.pause()
+	$WinAudio.play()
+	progress_bar.flash()
 	
 func _hide_classmates() -> void:
 	classmates_layer.hide()

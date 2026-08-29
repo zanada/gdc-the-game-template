@@ -57,3 +57,20 @@ var active: bool = false:
 func _ready() -> void:
 	value = 0.0
 	$ScrollTexture.hide()
+	
+func flash() -> void:
+	var temp_tween = create_tween()\
+	.set_ease(Tween.EASE_IN)\
+	.set_trans(Tween.TRANS_SINE)
+	
+	# tween to 1
+	temp_tween.tween_method(
+		func(x): $ScrollTexture.material.set_shader_parameter("override_mix", x),
+		0.0,
+		1.0, 0.2
+	)
+	temp_tween.tween_method(
+		func(x): $ScrollTexture.material.set_shader_parameter("override_mix", x),
+		1.0,
+		0.0, 0.2
+	)

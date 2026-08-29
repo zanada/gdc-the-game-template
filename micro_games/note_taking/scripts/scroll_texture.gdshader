@@ -6,6 +6,9 @@ uniform vec4 inactive_color : source_color;
 uniform float active : hint_range(0,1);
 uniform float scroll_speed;
 
+uniform vec4 override_color : source_color;
+uniform float override_mix : hint_range(0,1);
+
 varying vec2 coord;
 
 void vertex() {
@@ -20,10 +23,16 @@ void fragment() {
 	vec2 scrolled_coord = coord + vec2(scroll_speed) * TIME;
 	vec2 pixel_coord = floor(scrolled_coord) + vec2(0.5, 0.5);
 	
-	COLOR = mix(
+	vec4 col = mix(
 		inactive_color,
 		texture(custom_texture, fract(pixel_coord/texture_size)),
 		active
+	);
+	
+	COLOR = mix(
+		col,
+		override_color,
+		override_mix
 	);
 	
 }

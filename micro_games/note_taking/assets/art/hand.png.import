@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbwys3astsev1"
-path="res://.godot/imported/Layer 10.png-10e1e339c1f22da7c7f698e69bb86bd6.ctex"
+path="res://.godot/imported/hand.png-716c8950fa76e920f3b1fafd02ebc9fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://micro_games/note_taking/assets/art/Layer 10.png"
-dest_files=["res://.godot/imported/Layer 10.png-10e1e339c1f22da7c7f698e69bb86bd6.ctex"]
+source_file="res://micro_games/note_taking/assets/art/hand.png"
+dest_files=["res://.godot/imported/hand.png-716c8950fa76e920f3b1fafd02ebc9fb.ctex"]
 
 [params]
 
